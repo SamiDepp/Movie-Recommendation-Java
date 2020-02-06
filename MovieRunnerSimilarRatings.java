@@ -50,9 +50,9 @@ public class MovieRunnerSimilarRatings {
 	    MovieDatabase.initialize("ratedmoviesfull.csv");
 	    System.out.println("read data for " + MovieDatabase.size() + " movies");
 		FourthRatings fr = new FourthRatings();
-		String raterID = "71";
-		int numSimilarRaters = 20;
-		int minimalRaters = 5;
+		String raterID = "21";
+		int numSimilarRaters = 10;
+		int minimalRaters = 1;
 		ArrayList<Rating> ratings = fr.getSimilarRatings(raterID, numSimilarRaters, minimalRaters);
 	    if (ratings.size() == 0 || ratings.size() == 1)
 	    	System.out.println(ratings.size() + " movie matched");
@@ -161,7 +161,9 @@ public class MovieRunnerSimilarRatings {
 	}
 
 	public static void main(String[] args){
-		new MovieRunnerSimilarRatings().printSimilarRatingsByYearAfterAndMinutes();
+//		new MovieRunnerSimilarRatings().printSimilarRatings();
+		String raterID = "21";
+		new RecommendationRunner().printRecommendationsFor(raterID);
 	}
 
 }

@@ -108,7 +108,10 @@ public class FourthRatings {
     
     public ArrayList<Rating> getSimilarRatings(String id, int numSimilarRaters, int minimalRaters) {
     	ArrayList<Rating> res = new ArrayList<Rating>();
-    	ArrayList<Rating> list = getSimilarities(id);	
+    	ArrayList<Rating> list = getSimilarities(id);
+		if (list.size() < numSimilarRaters){
+			numSimilarRaters = list.size();
+		}
     	ArrayList<String> movies = MovieDatabase.filterBy(new TrueFilter());	
 	    for (String movieID : movies) {
         	double weightedAverage = 0;

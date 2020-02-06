@@ -32,13 +32,16 @@ public class RecommendationRunner implements Recommender {
 
     @Override
     public void printRecommendationsFor(String webRaterID) {
+//        RaterDatabase.initialize("ratings.csv");
+//        System.out.println("read data for " + RaterDatabase.size() + " raters");
+
         MovieDatabase.initialize("ratedmoviesfull.csv");
         FourthRatings fourth = new FourthRatings();
         ArrayList<Rating> result = fourth.getSimilarRatings(webRaterID, numSimilarRaters, minimalRaters);
         int num = result.size();
         if (num == 0){
             System.out.println("Recommendation List:");
-            System.out.println("Not Found");
+            System.out.println("Nothing to suggest, do you enjoy watching ?");
         } else {
             if (num > maxRecNum){
                 num = maxRecNum;
